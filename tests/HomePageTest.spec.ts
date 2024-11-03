@@ -42,10 +42,11 @@ test('Check logo', async ({ page }) => {
     // check atribute alt
     await expect(logoTransparent).toHaveAttribute('alt', 'The Connected Shop Logo White');
     // check atribute width
-    await expect(logoTransparent).toHaveAttribute('width');
+    await expect(logoTransparent).toHaveAttribute('width', '250px');
     // check atribute height
-    await expect(logoTransparent).toHaveAttribute('height');
+    await expect(logoTransparent).toHaveAttribute('height', '75px');
     // check atribute loading
     await expect(logoTransparent).toHaveAttribute('loading', 'lazy');
 
- })
+})
+
