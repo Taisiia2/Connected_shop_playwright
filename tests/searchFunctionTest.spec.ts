@@ -10,7 +10,7 @@ test.describe('Search function', () => {
         const searchLink = page.locator('.Header__SecondaryNav .Text--subdued[data-action="toggle-search"]');
         const searchInput = page.locator('input[name="q"]');
         const searchTitle = page.locator('h2.ProductItem__Title a:has-text("smart door lock")').nth(0);
-        const searchResult = page.locator('span.Heading.Text--subdued.u-h7')
+        const searchResult = page.locator('span.Heading.Text--subdued.u-h7').nth(0);
         await expect(searchLink).toBeTruthy();
         await expect(searchLink).toBeVisible();
         await expect(searchLink).toHaveAttribute('href', '/search');
@@ -26,7 +26,7 @@ test.describe('Search function', () => {
         // search title
         await expect(searchTitle).toContainText('Smart Door Lock');
         //search world "results"
-        
+        await expect(searchResult).toContainText('results');
     })
     test('', async ({ page }) => {
         
