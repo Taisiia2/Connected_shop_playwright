@@ -12,6 +12,7 @@ test.describe('Search function', () => {
         const searchTitle = page.locator('h2.ProductItem__Title a:has-text("smart door lock")').nth(0);
         const searchResult = page.locator('span.Heading.Text--subdued.u-h7').nth(0);
         const searchNotFound = page.locator("//p[text()='No results could be found']").first();
+        const searchIcon = page.locator('svg.Icon.Icon--search-desktop[role="presentation"]').first();
         await expect(searchLink).toBeTruthy();
         await expect(searchLink).toBeVisible();
         await expect(searchLink).toHaveAttribute('href', '/search');
@@ -26,15 +27,16 @@ test.describe('Search function', () => {
         await expect(searchInput).toHaveValue('smart door lock');
         await expect(searchTitle).toContainText('Smart Door Lock');
         await expect(searchResult).toContainText('results');
-        // //search product (world "results") negative case
+         //search product (world "results") negative case
         await searchInput.fill('abracadabra');
         await expect(searchInput).toHaveValue('abracadabra');
         await expect(searchNotFound).toContainText('No results could be found');
+        // check search icon
+        await expect(searchIcon).toBeTruthy();
+        await expect(searchIcon).toBeVisible();
+        await expect(searchIcon).toHaveAttribute('role', 'presentation');
 
     })
-    test('', async ({ page }) => {
-        
-     })
 
 });
 
