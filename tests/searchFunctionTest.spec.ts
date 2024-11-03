@@ -9,8 +9,8 @@ test.describe('Search function', () => {
     test('search exist product', async ({ page }) => {
         const searchLink = page.locator('.Header__SecondaryNav .Text--subdued[data-action="toggle-search"]');
         const searchInput = page.locator('input[name="q"]');
-        const searchTitle = page.locator('h2.ProductItem__Title a:has-text("smart door lock")');
-        const searchResult = page.locator('span.Heading .Text--subdued span:has-text("results")')
+        const searchTitle = page.locator('h2.ProductItem__Title a:has-text("smart door lock")').nth(0);
+        const searchResult = page.locator('span.Heading.Text--subdued.u-h7')
         await expect(searchLink).toBeTruthy();
         await expect(searchLink).toBeVisible();
         await expect(searchLink).toHaveAttribute('href', '/search');
@@ -23,6 +23,9 @@ test.describe('Search function', () => {
         //    fill text
         await searchInput.fill('smart door lock')
         await expect(searchInput).toHaveValue('smart door lock');
+        // search title
+        await expect(searchTitle).toContainText('Smart Door Lock');
+        //search world "results"
         
     })
     test('', async ({ page }) => {
